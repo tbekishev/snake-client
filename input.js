@@ -1,4 +1,5 @@
 const stdin  = require("process");
+const { MESSAGE_KEY } = require("./constants")
 let connection;
 
 const setupInput = function (conn) {
@@ -13,22 +14,8 @@ const setupInput = function (conn) {
 
 const handleUserInput = function (key) {
   if (key === '\u0003') {
-    process.exit();
-  }
-  if (key === 'w') {
-    connection.write("Move: up");
-  }
-  if (key === 'a') {
-    connection.write("Move: left");
-  }
-  if (key === 's') {
-    connection.write("Move: down");
-  }
-  if (key === 'd') {
-    connection.write("Move: right");
-  }
-  if (key === 'q') {
-    connection.write("Say: Yarrrrrrrr!!!");
-  }
+   process.exit();
+ }
+    connection.write(MESSAGE_KEY[key])
 };
 module.exports = {setupInput}
